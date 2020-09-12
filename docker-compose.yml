@@ -367,8 +367,18 @@ services:
       depends_on:
         - php-fpm
       networks:
-        - frontend
-        - backend
+        frontend:
+          aliases:
+            - home.test
+            - alice.test
+            - homeservice.test
+            - sso.test
+        backend:
+          aliases:
+            - home.test
+            - alice.test
+            - homeservice.test
+            - sso.test
 
 ### Blackfire ########################################
     blackfire:
