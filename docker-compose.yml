@@ -369,16 +369,26 @@ services:
       networks:
         frontend:
           aliases:
+            - api-gateway.test
             - home.test
             - alice.test
             - homeservice.test
             - sso.test
+            - euda.test
+            - mco.euda.test
+            - provider.euda.test
+            - company.euda.test
         backend:
           aliases:
+            - api-gateway.test
             - home.test
             - alice.test
             - homeservice.test
             - sso.test
+            - euda.test
+            - mco.euda.test
+            - provider.euda.test
+            - company.euda.test
 
 ### Blackfire ########################################
     blackfire:
