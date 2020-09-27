@@ -389,6 +389,7 @@ services:
             - mco.euda.test
             - provider.euda.test
             - company.euda.test
+            - thaonco-be.test
 
 ### Blackfire ########################################
     blackfire:
