@@ -29,6 +29,14 @@ RUN set -x ; \
 ARG PHP_UPSTREAM_CONTAINER=php-fpm
 ARG PHP_UPSTREAM_PORT=9000
 
+# install openssl
+RUN apk add --no-cache openssl
+
+RUN mkdir /etc/nginx/ssl 2> /dev/null
+RUN openssl genrsa -out "/etc/nginx/ssl/hrm.key" 2048 \
+    && openssl req -new -key "/etc/nginx/ssl/hrm.key" -out "/etc/nginx/ssl/hrm.csr" -subj "/CN=hrm/O=hrm/C=UK" \
+    && openssl x509 -req -days 365 -in "/etc/nginx/ssl/hrm.csr" -signkey "/etc/nginx/ssl/hrm.key" -out "/etc/nginx/ssl/hrm.crt"
+
 # Create 'messages' file used from 'logrotate'
 RUN touch /var/log/messages
 
